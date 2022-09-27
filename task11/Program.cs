@@ -7,25 +7,10 @@ int number = new Random().Next(100, 1000);
 
 int getDeleteTwoDigitFromNumber(int number)
 {
-    int maxDigit = 0;
-    while (number > 0)
-    {
-        int currentDigit = number % 10;
-        if(maxDigit < currentDigit)
-        {
-            maxDigit = currentDigit;
-        }
-        number = number / 10;
-        Console.WriteLine(number);
-    }
-    return maxDigit;
+    int firstNumber = number / 100;
+    int thirdNumber = number % 10;
+    return (firstNumber * 10 + thirdNumber);
 }
-{
-    for (int i = 0; i < 3; i++);
-    {
-        
-    }
-}
-
 Console.WriteLine(number);
-Console.WriteLine(getDeleteTwoDigitFromNumber(number));
+int result = getDeleteTwoDigitFromNumber(number);
+Console.WriteLine(result);
