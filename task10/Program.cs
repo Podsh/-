@@ -9,12 +9,12 @@
 Console.WriteLine("Введите трехзначное число");
 int number = Convert.ToInt32(Console.ReadLine());
 
-int getNewDigitFromNumber(int number)
+int getSecondDigitFromNumber(int number)
 {
     int secondDigit = number % 100;
     secondDigit = secondDigit / 10;
     return secondDigit;
 }
 
-int secondDigit = getNewDigitFromNumber(number);
+int secondDigit = getSecondDigitFromNumber(number);
 Console.WriteLine($"Для числа {number} вторая цифра {secondDigit}");
