@@ -44,9 +44,6 @@ int countElementsInArray (int[] incomingArray)
     return count;
 }
 
-
-Console.WriteLine("Вывести рандомный массив:");
-
 int[] currentArray = getRandomArray(123, 1, 200);
 printArray(currentArray);
 int count = countElementsInArray(currentArray);
