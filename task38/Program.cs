@@ -2,7 +2,7 @@
 Найдите разницу между максимальным и минимальным элементов массива.
 [3 7 22 2 78] -> 76 */
 
-double[] getRandomArray(int length, int startPoint, int endPoint)
+double[] getRandomArray(int length)
 {
     double[] resultArray = new double[length];
     for (int i = 0; i < length; i++)
@@ -50,7 +50,7 @@ double diffMaxMinElementsOfArray(double[] incomingArray)
 Console.WriteLine ("Задайте длину массива, введите целое число:");
 int length = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Массив случайных вещественных чисел:");
-double[] currentArray = getRandomArray(length, -99, 99);
+double[] currentArray = getRandomArray(length);
 printArray(currentArray);
 double diff = diffMaxMinElementsOfArray(currentArray);
 Console.WriteLine($"Разница между максимальным и минимальным элементами массива составляет {diff}");
