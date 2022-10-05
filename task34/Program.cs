@@ -22,7 +22,7 @@ void printArray(int[] incomingArray)
         Console.Write(incomingArray[i]);
         if (i < incomingArray.Length - 1)
         {
-            Console.Write(",");
+            Console.Write(", ");
         }
     }
     Console.WriteLine("]");
