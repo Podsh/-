@@ -30,6 +30,35 @@ int[,] generate2DArray(int height, int width, int randomStart, int randomEnd)
     return twoDArray;
 }
 
+int getNumberFromUser()
+{
+    Console.WriteLine("Введите целое положительное число для поиска элемента по номеру индекса");
+    int numberFromUser = Convert.ToInt32(Console.ReadLine());
+    return numberFromUser;
+}
+
+int[] getOneArrayFrowTwoArrays(int[,] generatedArray)
+{
+    int[] stringArray = new int[generatedArray.Length];
+    for (int i = 0; i < generatedArray.GetLength(0); i++)
+    {
+        for (int j = 0; j < generatedArray.GetLength(1); j++)
+        {
+            stringArray[j + (generatedArray.GetLength(1) * i)] = generatedArray[i, j];
+        }
+    }
+    return stringArray;
+}
+
+void findElementFromPosition(int[] generatedArray, int numberFromUser)
+{
+    if (numberFromUser >= generatedArray.Length || numberFromUser < 0)
+    {
+        Console.WriteLine($"Элемента с индексом {numberFromUser} не существует в массиве.");
+    }
+    else Console.WriteLine($"Элемент c индексом {numberFromUser} есть в массиве. Он содержит в себе следующее значение {generatedArray[numberFromUser]}");
+}
+
 void printColorData(string data)
 {
     Console.ForegroundColor = ConsoleColor.Green;
@@ -56,7 +85,31 @@ void print2DArray(int[,] arrayToPrint)
     }
 }
 
-int[,] generatedArray = generate2DArray(7, 5, -100, 100);
+void printArray(int[] arrayToPrint)
+{
+    for (int i = 0; i < arrayToPrint.GetLength(0); i++)
+    {
+        printColorData(i + "\t");
+    }
+    Console.WriteLine();
+    for (int i = 0; i < arrayToPrint.GetLength(0); i++)
+    {
+        Console.Write(arrayToPrint[i] + "\t");
+    }
+    Console.WriteLine();
+}
+
+Console.WriteLine($"Двумерный массив случайных целых чисел:");
+int[,] generatedArray = generate2DArray(3, 4, 1, 10);
 print2DArray(generatedArray);
+Console.WriteLine($"Двумерный массив, выстроенный в одномерный:");
+int[] arrayFromTwo = getOneArrayFrowTwoArrays(generatedArray);
+printArray(arrayFromTwo);
+int userNumber = getNumberFromUser();
+findElementFromPosition(arrayFromTwo, userNumber);
+
+
+
+
 
 
