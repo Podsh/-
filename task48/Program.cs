@@ -1,4 +1,5 @@
-﻿/* Задача 48: Задайте двумерный массив размера m на n, 
+﻿/* НЕ РЕШЕНА
+Задача 48: Задайте двумерный массив размера m на n, 
 каждый элемент в массиве находится по формуле: Aₘₙ = m+n. 
 Выведите полученный массив на экран.
 m = 3, n = 4.
@@ -6,6 +7,18 @@ m = 3, n = 4.
 1 2 3 4
 2 3 4 5 */
 
+int[,] generate2DArray(int height, int width, int randomStart, int randomEnd)
+{
+    int[,] twoDArray = new int[height, width];
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            twoDArray[i, j] = new Random().Next(randomStart, randomEnd + 1);
+        }
+    }
+    return twoDArray;
+}
 
 void printColorData(string data)
 {
@@ -33,10 +46,5 @@ void print2DArray(int[,] arrayToPrint)
     }
 }
 
-int[,] twoDArray = {
-    {1, 4, 7, 2},
-    {}
-};
-
-
+int[,] generatedArray = generate2DArray(7, 5, -100, 100);
 print2DArray(generatedArray);

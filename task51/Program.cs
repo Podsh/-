@@ -32,15 +32,36 @@ void print2DArray(int[,] arrayToPrint)
     }
 }
 
-int getSumOfDiagonals(int[,] matrix)
+int[] getElementsOfDiagonals(int[,] matrix)
+{
+    int bound = Math.Min(matrix.GetLength(0), matrix.GetLength(1));
+    int[] diagonal = new int[bound];
+    for (int i = 0; i < bound; i++)
+    {
+        diagonal[i] = matrix[i, i];
+    }
+    return diagonal;
+}
+
+int getSumOfDiagonals(int[] diagonal)
 {
     int sum = 0;
-    int bound = Math.Min(matrix.GetLength(0), matrix.GetLength(1));
-    for (int i = 0; i < bound; i ++)
+    for (int i = 0; i < diagonal.Length; i++)
     {
-        sum += matrix[i, i];
+        sum += diagonal[i];
     }
     return sum;
+}
+
+void printArrayWithSum(int[] diagonal)
+{
+    Console.Write(diagonal[0]);
+    for (int i = 1; i < diagonal.Length; i++)
+    {
+        Console.Write($" + {diagonal[i]}");
+    }
+    int sum = getSumOfDiagonals(diagonal);
+    Console.Write($" = {sum}");
 }
 
 int[,] twoDArray = {
@@ -51,6 +72,5 @@ int[,] twoDArray = {
 
 print2DArray(twoDArray);
 Console.WriteLine();
-int sum = getSumOfDiagonals(twoDArray);
-Console.WriteLine($"Сумма чисел главной диагонали равна {sum}");
-
+int[] diagonal = getElementsOfDiagonals(twoDArray);
+printArrayWithSum(diagonal);
