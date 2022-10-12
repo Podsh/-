@@ -1,11 +1,10 @@
-﻿/* Задача 49: Задайте двумерный массив. Найдите элементы, 
-у которых оба индекса чётные, и замените эти элементы на их квадраты.
-Например, изначально массив
-выглядел вот так:
+﻿/* Задача 51: Задайте двумерный массив. 
+Найдите Сумма элементов главной диагонали.
+Например, задан массив:
 1 4 7 2
 5 9 2 3
-8 4 2 4 */
-
+8 4 2 4
+Сумма элементов главной диагонали: 1+9+2 = 12 */
 
 void printColorData(string data)
 {
@@ -33,15 +32,15 @@ void print2DArray(int[,] arrayToPrint)
     }
 }
 
-void changeToSquareInEvenPosition(int[,] matrix)
+int getSumOfDiagonals(int[,] matrix)
 {
-    for (int i = 0; i < matrix.GetLength(0); i += 2)
+    int sum = 0;
+    int bound = Math.Min(matrix.GetLength(0), matrix.GetLength(1));
+    for (int i = 0; i < bound; i ++)
     {
-        for (int j = 0; j < matrix.GetLength(1); j += 2)
-        {
-            matrix[i, j] *= matrix[i, j];
-        }
+        sum += matrix[i, i];
     }
+    return sum;
 }
 
 int[,] twoDArray = {
@@ -51,7 +50,7 @@ int[,] twoDArray = {
 };
 
 print2DArray(twoDArray);
-changeToSquareInEvenPosition(twoDArray);
 Console.WriteLine();
-print2DArray(twoDArray);
+int sum = getSumOfDiagonals(twoDArray);
+Console.WriteLine($"Сумма чисел главной диагонали равна {sum}");
 
