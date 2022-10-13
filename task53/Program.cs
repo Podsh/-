@@ -37,12 +37,12 @@ void printColorData(string data)
 void showArray<T>(T[,] inputArray)
 {
     printColorData($" \t");
-    for (int i = 0; i < inputArray.GetLength(0); i++)
+    for (int i = 0; i < inputArray.GetLength(1); i++)
     {
         printColorData($"{i}\t");
     }
     Console.WriteLine();
-    for (int i = 0; i < inputArray.GetLength(1); i++)
+    for (int i = 0; i < inputArray.GetLength(0); i++)
     {
         printColorData($"{i}\t");
         for (int j = 0; j < inputArray.GetLength(1); j++)
@@ -53,7 +53,21 @@ void showArray<T>(T[,] inputArray)
     }
 }
 
+int[,] SwopRows(int[,] inputArray, int RowIndex1, int RowIndex2)
+{
+    for (int i = 0; i < inputArray.GetLength(1); i++)
+    {
+        int buffer = inputArray[RowIndex1, i];
+        inputArray[RowIndex1, i] = inputArray[RowIndex2, i];
+        inputArray[RowIndex2, i] = buffer;
+    }
+    return inputArray;
+}
+
+
 int[,] generatedArray = GenerateArray(5, 10, 100);
 showArray(generatedArray);
 bool[,] generatedBoolArray = GenerateBoolArray(10, 5);
 showArray(generatedBoolArray);
+int[,] swoppedArray = SwopRows(generatedArray, 0, generatedArray.GetLength(0) - 1);
+showArray(swoppedArray);
