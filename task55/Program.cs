@@ -15,19 +15,6 @@ int[,] GenerateArray(int height, int weight, int deviation)
     return generatedArray;
 }
 
-bool[,] GenerateBoolArray(int height, int weight)
-{
-    bool[,] generatedArray = new bool[height, weight];
-    for (int i = 0; i < height; i++)
-    {
-        for (int j = 0; j < weight; j++)
-        {
-            generatedArray[i, j] = (new Random().Next(0, 2) != 0);
-        }
-    }
-    return generatedArray;
-}
-
 void printColorData(string data)
 {
     Console.ForegroundColor = ConsoleColor.Green;
@@ -75,8 +62,6 @@ int[,] turnMatrix(int[,] inputArray)
 
 int[,] generatedArray = GenerateArray(5, 5, 100);
 showArray(generatedArray);
-bool[,] generatedBoolArray = GenerateBoolArray(10, 5);
-showArray(generatedBoolArray);
 int[,] swoppedArray = turnMatrix(generatedArray);
 showArray(swoppedArray);
 
