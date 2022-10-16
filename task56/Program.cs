@@ -21,24 +21,10 @@ int[,] GenerateArray(int height, int weight)
     return generatedArray;
 }
 
-void PrintColorData(string data)
+void Print2DArray(int[,] inputArray)
 {
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.Write(data);
-    Console.ResetColor();
-}
-
-void ShowArray(int[,] inputArray)
-{
-    PrintColorData($" \t");
-    for (int i = 0; i < inputArray.GetLength(1); i++)
-    {
-        PrintColorData($"{i}\t");
-    }
-    Console.WriteLine();
     for (int i = 0; i < inputArray.GetLength(0); i++)
     {
-        PrintColorData($"{i}\t");
         for (int j = 0; j < inputArray.GetLength(1); j++)
         {
             Console.Write($"{inputArray[i, j]}\t");
@@ -86,7 +72,7 @@ void GetNumberOfStringWitMinSum(int[] array)
             indexMin = i;
         }
     }
-    Console.WriteLine($"Строка с наименьшей суммой элементов - номер {indexMin + 1}");
+    Console.WriteLine($"Строка с наименьшей суммой элементов в двумерном массиве - номер {indexMin + 1}");
 }
 
 void PrintArray(int[] arrayToPrint)
@@ -101,7 +87,7 @@ void PrintArray(int[] arrayToPrint)
 
 Console.WriteLine($"Двумерный массив случайных чисел:");
 int[,] generatedArray = GenerateArray(3, 4);
-ShowArray(generatedArray);
+Print2DArray(generatedArray);
 int[] stringsArray = GetArrayOfStringsSum(generatedArray);
 Console.WriteLine($"Одномерный массив сумм элементов строк:");
 PrintArray(stringsArray);

@@ -22,24 +22,10 @@ int[,] GenerateArray(int height, int weight)
     return generatedArray;
 }
 
-void PrintColorData(string data)
+void Print2DArray(int[,] inputArray)
 {
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.Write(data);
-    Console.ResetColor();
-}
-
-void ShowArray(int[,] inputArray)
-{
-    PrintColorData($" \t");
-    for (int i = 0; i < inputArray.GetLength(1); i++)
-    {
-        PrintColorData($"{i}\t");
-    }
-    Console.WriteLine();
     for (int i = 0; i < inputArray.GetLength(0); i++)
     {
-        PrintColorData($"{i}\t");
         for (int j = 0; j < inputArray.GetLength(1); j++)
         {
             Console.Write($"{inputArray[i, j]}\t");
@@ -58,9 +44,9 @@ int[,] GetDecreasedArray(int[,] incomingArray)
             {
                 if (incomingArray[i, k] < incomingArray[i, k + 1])
                 {
-                    int temp = incomingArray[i, k + 1];
+                    int buff = incomingArray[i, k + 1];
                     incomingArray[i, k + 1] = incomingArray[i, k];
-                    incomingArray[i, k] = temp;
+                    incomingArray[i, k] = buff;
                 }
             }
         }
@@ -70,8 +56,8 @@ int[,] GetDecreasedArray(int[,] incomingArray)
 
 Console.WriteLine($"Двумерный массив случайных чисел:");
 int[,] generatedArray = GenerateArray(3, 4);
-ShowArray(generatedArray);
+Print2DArray(generatedArray);
 Console.WriteLine($"Измененный массив с элементами строк, упорядоченными по убыванию:");
 int[,] decreasedArray = GetDecreasedArray(generatedArray);
-ShowArray(decreasedArray);
+Print2DArray(decreasedArray);
 
