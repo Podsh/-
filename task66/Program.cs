@@ -17,7 +17,6 @@ void PrintRange(int numberM, int numberN)
 {
     if (numberM == numberN)
     {
-        Console.Write($"{numberN} ");
         return;
     }
     PrintRange(numberM, numberN - 1);

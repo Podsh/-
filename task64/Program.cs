@@ -14,6 +14,6 @@ void PrintRange(int number)
     {
         return;
     }
-    PrintRange(number-1);
     Console.Write($"{number}, ");
+    PrintRange(number - 1);
 }
